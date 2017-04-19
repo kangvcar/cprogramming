@@ -17,7 +17,7 @@ main()
 	nc = 0;
 	ovflow = 0;
 	for(i = 0; i < MAXWORD; ++i){
-		wl[i] = 0;
+		wl[i] = 0;	//用0填满数组
 	}
 	while((c = getchar()) != EOF){
 		if(c == ' ' || c == '\n' || c == '\t'){
