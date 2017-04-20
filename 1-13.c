@@ -1,21 +1,21 @@
 #include <stdio.h>
 
-#define MAXHIST 15
-#define MAXWORD 11
-#define IN	1
-#define OUT	0
-
+#define MAXHIST 15	//max length of histogram
+#define MAXWORD 11	//max length of a word
+#define IN	1	//inside a word
+#define OUT	0	//outside a word
+/* print horizontal histogram */
 main()
 {
 	int c, i, nc, state;
-	int len;
-	int maxvalue;
-	int ovflow;
-	int wl[MAXWORD];
+	int len;	//length of each bar
+	int maxvalue;	//maximum value for wl[]
+	int ovflow;	//number of overflow words
+	int wl[MAXWORD];	//word length counters
 
 	state = OUT;
-	nc = 0;
-	ovflow = 0;
+	nc = 0;		//number of chars in a word
+	ovflow = 0;	//number of words >= MAXWORD
 	for(i = 0; i < MAXWORD; ++i){
 		wl[i] = 0;	//用0填满数组
 	}
@@ -30,9 +30,9 @@ main()
 			nc = 0;
 		}else if(state == OUT){
 			state = IN;
-			nc = 1;
+			nc = 1;		//beginning of a new word
 		}else
-			++nc;
+			++nc;		//inside a word
 	}
 	maxvalue = 0;
 	for(i = 1; i < MAXWORD; ++i){
